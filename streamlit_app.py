@@ -40,4 +40,6 @@ streamlit.header("🍌🥭 The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 #allow end user to add a fruit to the list
 add_my_fruit = streamlit.text_input('What fruit would you like add?','watermelon')
-streamlit.write('Thanks for adding fruit ', add_my_fruit)
+streamlit.write('Thanks for adding ', add_my_fruit)
+#insert in SF
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('from streamlit')")
