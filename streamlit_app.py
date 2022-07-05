@@ -19,7 +19,7 @@ fruits_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_show)
 
 #new section to display fruitvice API response
-streamlit.header("Fruityvice Fruit Advice!")
+streamlit.header("🍌🥭 Fruityvice Fruit Advice!🥝🍇")
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
 streamlit.write('The user entered ', fruit_choice)
 
@@ -36,5 +36,8 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
-streamlit.header("the fruit load list contains:")
+streamlit.header("🍌🥭 The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
+#allow end user to add a fruit to the list
+add_my_fruit = streamlit.text_input('What fruit would you like add?','watermelon')
+streamlit.write('Thanks for adding fruit ', add_my_fruit)
