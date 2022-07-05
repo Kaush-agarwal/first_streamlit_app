@@ -42,7 +42,7 @@ try:
 except URLError as e:
   streamlit.error()
 
-streamlit.header("🍌🥭 The fruit load list contains:")
+streamlit.header("🍌🥭 View our fruit list - Add your favorites!")
 
 #adding a function
 def get_fruit_load_list():
