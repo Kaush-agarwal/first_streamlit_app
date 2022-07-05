@@ -43,6 +43,8 @@ except URLError as e:
   streamlit.error()
 
 streamlit.header("🍌🥭 The fruit load list contains:")
+
+#adding a function
 def get_fruit_load_list():
   with  my_cnx.cursor() as my_cur:
     my_cur.execute("SELECT * from fruit_load_list")
@@ -55,10 +57,17 @@ if streamlit.button('Get fruit load list'):
   streamlit.dataframe(my_data_rows)
  
 #dont run
-streamlit.stop()
+#streamlit.stop()
+
+#adding a function
+def insert_row(new_fruit):
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values (new_fruit)")
+    return "thanks for adding "+new_fruit
 
 #allow end user to add a fruit to the list
-add_my_fruit = streamlit.text_input('What fruit would you like add?','watermelon')
-streamlit.write('Thanks for adding ', add_my_fruit)
-#insert in SF
-my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('from streamlit')")
+add_my_fruit = streamlit.text_input('What fruit would you like add?')
+if streamlit.button('Add a new fruit to the list'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  backfromfunc= insert_row(add_my_fruit)
+  streamlit.text (backfromfunc)
