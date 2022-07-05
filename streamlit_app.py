@@ -58,7 +58,7 @@ if streamlit.button('Get fruit load list'):
   streamlit.dataframe(my_data_rows)
  
 #dont run
-#streamlit.stop()
+streamlit.stop()
 
 #adding a function
 def insert_row(new_fruit):
